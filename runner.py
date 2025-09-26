@@ -2,6 +2,7 @@ from qiskit_aer import AerSimulator
 import matplotlib.pyplot as plt
 from qiskit.visualization import plot_histogram
 from backend_qiskit import ir_to_qiskit
+from IPython.display import display
 
 def run(ir):
     qc = ir_to_qiskit(ir)
@@ -23,4 +24,4 @@ def run(ir):
     plt.show()
     
     fig = plot_histogram(counts)
-    fig.show()
+    display(fig)
