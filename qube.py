@@ -1,6 +1,7 @@
 import sys
 from lexer import read_file, tokenize
 from parser import Parser
+from runner import run
 
 def main():
     if len(sys.argv) < 2:
@@ -8,14 +9,16 @@ def main():
         sys.exit(1)
 
     filename = sys.argv[1]
-
     try:
+        # Lexing and Parsing
         source = read_file(filename)
         tokens = tokenize(source)
         parser = Parser(tokens)
         ir = parser.parse()
-        print("\n--- Intermediate Representation (IR) ---")
-        print(ir)
+
+        # Run the circuit
+        run(ir)
+
     except FileNotFoundError:
         print(f"File not found: {filename}")
         sys.exit(1)
