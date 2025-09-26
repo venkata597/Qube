@@ -1,11 +1,12 @@
 from qiskit import Aer, execute
+from qiskit_aer import AerSimulator
 import matplotlib.pyplot as plt
 from backend_qiskit import ir_to_qiskit
 
 def run(ir):
     qc = ir_to_qiskit(ir)
 
-    backend = Aer.get_backend("qasm_simulator")
+    backend = AerSimulator()
     job = execute(qc, backend, shots=ir.get("shots", 1024))
     result = job.result()
     counts = result.get_counts()
