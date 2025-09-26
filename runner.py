@@ -1,4 +1,3 @@
-from qiskit import Aer, execute
 from qiskit_aer import AerSimulator
 import matplotlib.pyplot as plt
 from backend_qiskit import ir_to_qiskit
