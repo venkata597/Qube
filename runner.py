@@ -1,5 +1,6 @@
 from qiskit_aer import AerSimulator
 import matplotlib.pyplot as plt
+from qiskit.visualization import plot_histogram
 from backend_qiskit import ir_to_qiskit
 
 def run(ir):
