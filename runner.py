@@ -23,4 +23,4 @@ def run(ir):
     plt.show()
     
     fig = plot_histogram(counts)
-    plt.show(fig)
+    fig.show()
