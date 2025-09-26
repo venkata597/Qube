@@ -20,3 +20,6 @@ def run(ir):
 
     qc.draw("mpl")
     plt.show()
+    
+    plot_histogram(counts)
+    plt.show()
