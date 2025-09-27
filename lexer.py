@@ -2,7 +2,7 @@ import re
 
 TOKEN_PATTERNS = [
     (r'\s+', None),
-    (r'QUBIT|DEF|H|X|CNOT|MEASURE|RUN', 'KEYWORD'),
+    (r'QUBIT|DEF|END|H|X|CNOT|MEASURE|RUN', 'KEYWORD'),  # Added END
     (r'[A-Za-z_][A-Za-z0-9_]*', 'IDENTIFIER'),
     (r'[0-9]+', 'NUMBER'),
     (r'=', 'EQUALS'),

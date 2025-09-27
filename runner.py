@@ -1,21 +1,22 @@
-from qiskit_aer import AerSimulator
+from qiskit import Aer, execute
+from qiskit.visualization import plot_histogram
 import matplotlib.pyplot as plt
-from backend_qiskit import ir_to_qiskit
+from backend_qiskit import build_circuit
 
 def run(ir):
-    qc = ir_to_qiskit(ir)
+    print("\n[ IR Representation ]")
+    print(ir)
 
-    simulator = AerSimulator()
-    shots = ir.get("shots", 1024)
-    job = simulator.run(qc, shots=shots)
+    qc = build_circuit(ir)
+    print("\n[ Circuit Diagram ]")
+    print(qc.draw())
+
+    backend = Aer.get_backend("aer_simulator")
+    job = execute(qc, backend, shots=ir["shots"])
     result = job.result()
     counts = result.get_counts()
 
-    print("\n--- Intermediate Representation (IR) ---")
-    print(ir)
-    print("\n--- Quantum Circuit ---")
-    print(qc)
-    print("\n--- Execution Results ---")
+    print("\n[ Measurement Results ]")
     print(counts)
 
     qc.draw("mpl")
